@@ -2,7 +2,9 @@ require('dotenv').config()
 const express = require('express'),
         session = require('express-session'),
         massive = require('massive'),
-        ctrl = require('./controllers/controller')
+        authCtrl = require('./controllers/authCtrl'),
+        potentialCtrl = require('./controllers/potentialCtrl'),
+        calendarCtrl = require('./controllers/calendarCtrl')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
@@ -26,19 +28,19 @@ massive(CONNECTION_STRING).then((database) => {
 
 // Admin Endpoints
 
-// Create
-app.post('/auth/register', ctrl.register)
-app.post('/auth/login', ctrl.login)
-app.post('/api/create-event', ctrl.createEvent)
-// Read
-app.get('/auth/admin', ctrl.getAdmin)
-app.get('/auth/logout', ctrl.logout)
-app.get('/api/get-event/:id', ctrl.getEvent)
-// Update
-app.put('/api/update-event/:id', ctrl.updateEvent)
-// Destroy
-app.delete('/api/delete/:event_id', ctrl.deleteEvent)
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.get('/auth/admin', authCtrl.getAdmin)
+app.get('/auth/logout', authCtrl.logout)
+
+// Calendar Endpoints
+
+app.post('/api/create-event', calendarCtrl.createEvent)
+app.get('/api/get-event/:id', calendarCtrl.getEvent)
+app.put('/api/update-event/:id', calendarCtrl.updateEvent)
+app.delete('/api/delete/:event_id', calendarCtrl.deleteEvent)
 
 // Potential Client Endpoints
-app.post('/api/client-info', ctrl.createClient)
-app.post('/api/create-consultation', ctrl.createConsultation)
+
+app.post('/api/client-info', potentialCtrl.createClient)
+app.post('/api/create-consultation', potentialCtrl.createConsultation)
