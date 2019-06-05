@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export class LeadForm extends Component {
+export class Confirmation extends Component {
     render() {
         return (
             <div>
-                <h1>LeadForm</h1>
+                <h1>Confirmation</h1>
             </div>
         )
     }
 }
 
-export default LeadForm
+export default Confirmation

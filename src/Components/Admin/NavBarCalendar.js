@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export class LeadForm extends Component {
+export class NavBarCalendar extends Component {
     render() {
         return (
             <div>
-                <h1>LeadForm</h1>
+                <h1>Nav Bar</h1>
             </div>
         )
     }
 }
 
-export default LeadForm
+export default NavBarCalendar

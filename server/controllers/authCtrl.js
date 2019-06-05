@@ -25,6 +25,9 @@ module.exports = {
         });
         session.admin = {
           id: createdAdmin[0].login_id,
+          firstname: createdAdmin[0].admin_first_name,
+          lastname: createdAdmin[0].admin_last_name,
+          email: createdAdmin[0].admin_email,
           username: createdAdmin[0].username
         };
         res.status(200).send(session.admin);
@@ -39,7 +42,13 @@ module.exports = {
     
         const authenticated = bcrypt.compareSync(password, adminFound[0].password)
         if (authenticated) {
-            session.admin = {id: adminFound[0].admin_id, admin_first_name: adminFound[0].admin_first_name}
+            session.admin = {
+              id: adminFound[0].admin_id, 
+              firstname: adminFound[0].admin_first_name,
+              lastname: adminFound[0].admin_last_name,
+              email: adminFound[0].admin_email,
+              username: adminFound[0].username
+            }
             res.status(200).send(session.admin)
         } else {
             res.status(401).send(`Incorrect username or password`)
