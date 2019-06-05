@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FullCalendar from 'fullcalendar-reactwrapper'
 import {Link} from 'react-router-dom'
+import Verify from './Verify'
 
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css"; 
 
@@ -26,6 +27,7 @@ export class UserCalendar extends Component {
                     editable= {true}
                     events = {this.state.events}
                 />
+                <Verify />
             </div>
         )
     }
