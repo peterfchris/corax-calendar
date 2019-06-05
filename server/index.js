@@ -24,4 +24,21 @@ massive(CONNECTION_STRING).then((database) => {
     app.listen(SERVER_PORT, () => console.log(`Port ${SERVER_PORT} is alive and well`))
 })
 
-// Endpoints
+// Admin Endpoints
+
+// Create
+app.post('/auth/register', ctrl.register)
+app.post('/auth/login', ctrl.login)
+app.post('/api/create-event', ctrl.createEvent)
+// Read
+app.get('/auth/admin', ctrl.getAdmin)
+app.get('/auth/logout', ctrl.logout)
+app.get('/api/get-event/:id', ctrl.getEvent)
+// Update
+app.put('/api/update-event/:id', ctrl.updateEvent)
+// Destroy
+app.delete('/api/delete/:event_id', ctrl.deleteEvent)
+
+// Potential Client Endpoints
+app.post('/api/client-info', ctrl.createClient)
+app.post('/api/create-consultation', ctrl.createConsultation)

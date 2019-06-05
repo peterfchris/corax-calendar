@@ -1,0 +1,1 @@
+select admin_first_name, admin_email, admin_id from admins;
