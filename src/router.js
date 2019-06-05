@@ -11,7 +11,6 @@ import CreateEvent from './Components/Admin/CreateEvent'
 // User Components
 
 import Home from './Components/User/Home'
-import Questionnaire from './Components/User/Questionnaire'
 import LeadForm from './Components/User/LeadForm'
 import UserCalendar from './Components/User/UserCalendar'
 import Confirmation from './Components/User/Confirmation'
@@ -20,7 +19,6 @@ export default (
     <Switch>
         {/* User Routes */}
         <Route exact path='/' component={Home} />
-        <Route path='/questionnaire' component={Questionnaire} />
         <Route path='/lead-form' component={LeadForm} />
         <Route path='/scheduler' component={UserCalendar} />
         <Route path='/confirmation' component={Confirmation} />

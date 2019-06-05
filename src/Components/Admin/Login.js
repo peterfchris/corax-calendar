@@ -3,6 +3,7 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
+import {Link} from 'react-router-dom'
 
 export class Login extends Component {
     constructor(){
@@ -44,11 +45,15 @@ export class Login extends Component {
 						name='password'
 						onChange={this.handleLoginUpdate}
 					/>
-					<button onClick={this.handleLogin}>Login</button>
+					<button onClick={this.handleLogin}><Link to='/calendar'>Login</Link></button>
 				</form>
             </div>
         )
     }
 }
 
-export default  withRouter(connect(null, {updateAdmin})(Login))
+function mapStateToProps(reduxState){
+	return reduxState
+}
+
+export default  withRouter(connect(mapStateToProps, {updateAdmin})(Login))

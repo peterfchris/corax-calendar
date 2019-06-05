@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {updateAdmin} from '../../redux/adminReducer'
 
 class RegisterForm extends Component {
 	constructor() {
 		super()
+
 		this.state = {
 			username: '',
 			password: '',
@@ -14,22 +17,24 @@ class RegisterForm extends Component {
 		}
 	}
 
-	handleUserRegister = (e) => {
+	handleRegister = async (e) => {
 		e.preventDefault()
 		const { firstname, lastname, email, username, password } = this.state
-		axios
-			.post('/auth/register', { firstname, lastname, email, username, password })
+		await axios
+			.post('/auth/register', { admin_first_name: firstname, admin_last_name: lastname, admin_email: email, username, password })
 			.then((res) => {
-				this.props.history.push('/details')
+				this.props.history.push('/login')
 			})
 			.catch((err) => {
 				console.log(err)
 			})
-		e.target.firstname.value = ''
-		e.target.lastname.value = ''
-		e.target.email.value = ''
-		e.target.password.value = ''
-		e.target.username.value = ''
+		this.setState({
+			username: '',
+			password: '',
+			firstname: '',
+			lastname: '',
+			email: ''
+		})
 	}
 
 	handleRegisterInfoUpdate = (e) => {
@@ -41,7 +46,7 @@ class RegisterForm extends Component {
 		return (
 			<>
 				<h1>Register</h1>
-				<form onSubmit={this.handleUserRegister}>
+				<form onSubmit={this.handleRegister}>
 					<input
 						type='text'
 						placeholder='first name'
@@ -72,11 +77,15 @@ class RegisterForm extends Component {
 						name='password'
 						onChange={this.handleRegisterInfoUpdate}
 					/>
-					<button>Register</button>
+					<button onClick={this.handleRegister}>Register</button>
 				</form>
 			</>
 		)
 	}
 }
 
-export default withRouter(RegisterForm)
+function mapStateToProps(reduxState){
+	return reduxState
+}
+
+export default withRouter(connect(mapStateToProps, {updateAdmin})(RegisterForm))
