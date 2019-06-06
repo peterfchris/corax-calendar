@@ -19,7 +19,7 @@ export class UserCalendar extends Component {
                 <FullCalendar 
                     id="user-calendar"
                     header = {{
-                        left: 'prev,next today myCustomButton',
+                        left: 'prev,next today',
                         center: 'title',
                         right: 'month,basicWeek,basicDay'
                     }}

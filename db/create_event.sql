@@ -1,5 +1,5 @@
 insert into event_details
-(event_name, start_time, start_date, end_time, end_date)
+(title, start, end)
 VALUES
-(${event_name}, ${start_time}, ${start_date}, ${end_time}, ${end_date})
+(${title}, ${start}, ${end})
 RETURNING event_id;

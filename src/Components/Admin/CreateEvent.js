@@ -1,6 +1,23 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
+// JUNE 7 CHECKLIST
+
+// back to calendar button
+// create event button pushes new event info to calendar
+// create event button pushes new event to db
+// input fields have date and time pickers
+    // start time
+    // start date
+    // end time
+    // end date
+// when mto - client is in event title, due dates are auto populated
+// when mto - opp is in event title, due dates are auto populated with reversal of roles
+
+// JUNE 17 CHECKLIST
+
+// Style component
+
 export class CreateEvent extends Component {
     render() {
         return (

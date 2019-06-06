@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
+// JUNE 12 CHECKLIST
+
+// Make Verify only a pop up over the calendar, rather than displayed at the bottom
+// Add twilio and nodemailer
+
 export class Verify extends Component {
     render() {
         return (

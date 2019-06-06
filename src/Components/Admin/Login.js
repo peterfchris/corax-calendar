@@ -5,6 +5,10 @@ import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
 import {Link} from 'react-router-dom'
 
+// JUNE 17 CHECKLIST
+
+// style component
+
 export class Login extends Component {
     constructor(){
         super()

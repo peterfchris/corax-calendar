@@ -1,0 +1,1 @@
+select event_id as id, title, start, end_2 as end from event_details;

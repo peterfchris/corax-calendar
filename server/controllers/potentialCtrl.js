@@ -24,14 +24,12 @@ module.exports = {
           potential_last,
           potential_email,
           potential_phone,
-          event_name,
-          start_time,
-          start_date,
-          end_time,
-          end_date
+          title, 
+          start,
+          end
         } = req.body;
         const db = req.app.get("db");
-        db.create_event({ event_name, start_time, start_date, end_time, end_date })
+        db.create_event({ title, start, end })
           .then(dbResponse => {
             const { event_id } = dbResponse[0];
             console.log(event_id);

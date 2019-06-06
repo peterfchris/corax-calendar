@@ -4,6 +4,10 @@ import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
 
+// JUNE 17 CHECKLIST
+
+// style component
+
 class RegisterForm extends Component {
 	constructor() {
 		super()

@@ -8,6 +8,7 @@ const initialState = {
 const UPDATE_ADMIN = 'UPDATE_ADMIN'
 const CLEAR_ADMIN = 'CLEAR_ADMIN'
 
+
 export function updateAdmin(admin){
     return {
         type: UPDATE_ADMIN,
@@ -20,6 +21,8 @@ export function clearAdmin(){
         type: CLEAR_ADMIN
     }
 }
+
+
 
 function adminReducer(state = initialState, action){
     switch(action.type){
