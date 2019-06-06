@@ -46,6 +46,7 @@ export class Login extends Component {
 						onChange={this.handleLoginUpdate}
 					/>
 					<button onClick={this.handleLogin}><Link to='/calendar'>Login</Link></button>
+                    <a><Link to='/register'>Register</Link></a>
 				</form>
             </div>
         )

@@ -15,7 +15,7 @@ export class UserCalendar extends Component {
     render() {
         return (
             <div>
-                <h1><Link to='/confirmation'>User Calendar</Link></h1>
+                <h1>Choose the time you want</h1>
                 <FullCalendar 
                     id="user-calendar"
                     header = {{

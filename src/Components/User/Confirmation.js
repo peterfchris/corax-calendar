@@ -5,7 +5,8 @@ export class Confirmation extends Component {
     render() {
         return (
             <div>
-                <h1><Link to='/'>Confirmation</Link></h1>
+                <h3>We look forward to meeting you</h3>
+                <button><Link to='/'>Back to site</Link></button>
             </div>
         )
     }
