@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
 import {Link} from 'react-router-dom'
+import './Login.css'
 
 // JUNE 17 CHECKLIST
 
@@ -30,28 +31,55 @@ export class Login extends Component {
 		this.setState({
 			[e.target.name]: e.target.value
 		})
-	}
+    }
+
+    handleRegister = () => {
+        this.props.history.push('/register')
+    }
+
+    handleCalendarLogin = () => {
+        this.props.history.push('/calendar')
+    }
 
     render() {
         return (
             <div>
-                <h1>Login</h1>
-				<form onSubmit={this.handleLogin}>
-					<input
-						type='text'
-						placeholder='email'
-						name='email'
-						onChange={this.handleLoginUpdate}
-					/>
-					<input
-						type='password'
-						placeholder='password'
-						name='password'
-						onChange={this.handleLoginUpdate}
-					/>
-					<button onClick={this.handleLogin}><Link to='/calendar'>Login</Link></button>
-                    <a><Link to='/register'>Register</Link></a>
-				</form>
+                <div className="login-container" > 
+                    <div className="login-form">
+                        <h1 className='login'>Login</h1>
+                        <form className='login-form-1' onSubmit={this.handleLogin}>
+                            <div className='input-fields'>
+                                <input
+                                    className='login-email'
+                                    type='text'
+                                    placeholder='email'
+                                    name='email'
+                                    onChange={this.handleLoginUpdate}
+                                />
+                                <br/>
+                                <input
+                                    className='login-password'
+                                    type='password'
+                                    placeholder='password'
+                                    name='password'
+                                    onChange={this.handleLoginUpdate}
+                                />
+                            </div>
+                            <div className="login-btns">
+                                <button 
+                                    className='login-button' 
+                                    onClick={this.handleCalendarLogin}>
+                                        Login
+                                </button>
+                                <button 
+                                    className='login-button' 
+                                    onClick={this.handleRegister}>
+                                        Register
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FullCalendar from "fullcalendar-reactwrapper";
 import { Link } from "react-router-dom";
-
+import './UserCalendar.css'
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
 
 export class UserCalendar extends Component {
