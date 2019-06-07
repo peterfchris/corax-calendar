@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
 
+import './Register.css'
+
 // JUNE 17 CHECKLIST
 
 // style component
@@ -48,41 +50,54 @@ class RegisterForm extends Component {
 	}
 	render() {
 		return (
-			<>
-				<h1>Register</h1>
-				<form onSubmit={this.handleRegister}>
-					<input
-						type='text'
-						placeholder='first name'
-						name='firstname'
-						onChange={this.handleRegisterInfoUpdate}
-					/>
-					<input
-						type='text'
-						placeholder='last name'
-						name='lastname'
-						onChange={this.handleRegisterInfoUpdate}
-					/>
-					<input
-						type='text'
-						placeholder='email'
-						name='email'
-						onChange={this.handleRegisterInfoUpdate}
-					/>
-					<input
-						type='text'
-						placeholder='username'
-						name='username'
-						onChange={this.handleRegisterInfoUpdate}
-					/>
-					<input
-						type='password'
-						placeholder='password'
-						name='password'
-						onChange={this.handleRegisterInfoUpdate}
-					/>
-					<button onClick={this.handleRegister}>Register</button>
-				</form>
+			<> 
+				<div className='register-page'>
+					<div className='register-container'>
+						<h1 className='register-header'>Register</h1>
+						<form onSubmit={this.handleRegister}>
+							<input
+								className='register-input'
+								type='text'
+								placeholder='first name'
+								name='firstname'
+								onChange={this.handleRegisterInfoUpdate}
+							/>
+							<input
+								className='register-input'
+								type='text'
+								placeholder='last name'
+								name='lastname'
+								onChange={this.handleRegisterInfoUpdate}
+							/>
+							<input
+								className='register-input'
+								type='text'
+								placeholder='email'
+								name='email'
+								onChange={this.handleRegisterInfoUpdate}
+							/>
+							<input
+								className='register-input'
+								type='text'
+								placeholder='username'
+								name='username'
+								onChange={this.handleRegisterInfoUpdate}
+							/>
+							<input
+								className='register-input'
+								type='password'
+								placeholder='password'
+								name='password'
+								onChange={this.handleRegisterInfoUpdate}
+							/>
+							<button 
+								className='register-button'
+								onClick={this.handleRegister}>
+									Register
+							</button>
+						</form>
+					</div>
+				</div>
 			</>
 		)
 	}
