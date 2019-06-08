@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import './Confirmation.css'
 
 // JUNE 12 CHECKLIST
 
@@ -9,9 +10,13 @@ export class Confirmation extends Component {
     render() {
         return (
             <div>
-                <h3>We look forward to meeting you</h3>
-                {/* Add a dynamic display of the new event HERE */}
-                <button><Link to='/'>Back to site</Link></button>
+                <div className='confirmation-page'>
+                    <div className='confirmation-container'>
+                        <h3 className='confirmation-header'>We look forward to meeting you!</h3>
+                        {/* Add a dynamic display of the new event HERE */}
+                        <button className='confirmation-btn'>Back to site</button>
+                    </div>
+                </div>
             </div>
         )
     }
