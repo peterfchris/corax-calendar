@@ -9,7 +9,7 @@ export class Home extends Component {
                 <div className='home-page'>
                     <div className='home-container'>
                         <h1 className='home-header'>Corax Calendar</h1>
-                        <p className='text' >Lorem ipsum dolor sit amet, consectetur 
+                        <p className='text'>Lorem ipsum dolor sit amet, consectetur 
                         adipiscing elit, sed do eiusmod tempor incididunt ut labore 
                         et dolore magna aliqua.</p>
                         <p className='text'>Ut enim ad minim veniam, quis nostrud 

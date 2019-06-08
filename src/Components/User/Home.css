@@ -49,3 +49,9 @@
     position: absolute;
     margin: 25vh .4vh;
 }
+
+.schedule-btn:hover {
+    background: #00334e;
+    color: #e8e8e8;
+    text-decoration: none;
+}
