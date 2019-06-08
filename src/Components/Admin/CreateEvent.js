@@ -1,45 +1,50 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-
-// JUNE 7 CHECKLIST
-
-// back to calendar button
-// create event button pushes new event info to calendar
-// create event button pushes new event to db
-// input fields have date and time pickers
-    // start time
-    // start date
-    // end time
-    // end date
-// when mto - client is in event title, due dates are auto populated
-// when mto - opp is in event title, due dates are auto populated with reversal of roles
-
-// JUNE 17 CHECKLIST
-
-// Style component
+import './CreateEvent.css'
 
 export class CreateEvent extends Component {
     render() {
         return (
             <div>
-                <input
-                placeholder='Event Title' />
-                <button><Link to='/calendar'>Create Event</Link></button>
-                <input
-                type='checkbox' />
-                <p>All Day</p>
-                <input
-                type='checkbox' />
-                <p>Start Time</p>
-                <input
-                type='checkbox' />
-                <p>Start Date</p>
-                <input
-                type='checkbox' />
-                <p>End Time</p>
-                <input
-                type='checkbox' />
-                <p>End Date</p>
+                <div className='new-event-container'>
+                    <h1 className='create-event-header'>Create Event</h1>
+                    <form>
+                        <input
+                        className='title-input'
+                        placeholder='Event Title' />
+                        <div id='btn-container'>
+                            <button className='new-event-btn'>Create Event</button>
+                            <button className='cancel-event-btn'>Cancel</button>
+                        </div>
+                        <br />
+                        <div className='all-day-container'>
+                            <input
+                            className='day-input'
+                            type='checkbox' />
+                            <p className='all-day'>All Day</p>
+                        </div>
+                        <div className='input-container'>
+                            <p className='time-text'>Start Time</p>
+                            <input
+                            className='time-input'
+                            type='time' />
+                            <p className='time-text'>Start Date</p>
+                            <input
+                            className='date-input'
+                            type='date' />
+                        </div>
+                        <div className='input-container-2'>
+                            <p className='end-text'>End Time</p>
+                            <input
+                            className='time-input'
+                            type='time' />
+                            <p className='end-text'>End Date</p>
+                            <input
+                            className='date-input'
+                            type='date' />
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

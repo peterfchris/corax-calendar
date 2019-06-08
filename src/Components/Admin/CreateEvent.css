@@ -1,0 +1,132 @@
+/* General */
+
+* {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.new-event-container {
+    height: 90vh;
+    width: 80%;
+}
+
+/* buttons */
+
+#btn-container {
+    margin: 3vh;
+    display: flex;
+}
+
+.new-event-btn {
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    font-family: Arial;
+    color: #e8e8e8;
+    font-size: 20px;
+    background: #00334e;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border: none;
+    text-transform: uppercase;
+    margin-right: 3vh;
+}
+
+.new-event-btn:hover {
+    background: #5588a3;
+    text-decoration: none;
+}
+
+.cancel-event-btn {
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    font-family: Arial;
+    color: #145374;
+    font-size: 20px;
+    background: #e8e8e8;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border: none;
+}
+
+.cancel-event-btn:hover {
+    background: #5588a3;
+    text-decoration: none;
+}
+
+/* input fields */
+
+.input-container {
+    display: flex;
+}
+
+.input-container-2 {
+    display: flex;
+}
+
+.title-input {
+    width: 58vw;
+    height: 1.7rem;
+    margin: 0 3vh;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: grey;
+    font-size: 1.4rem;
+    padding: 1vh;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: gray;
+    font-size: 1.4rem;
+    padding: 1vh;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: gray;
+    font-size: 1.4rem;
+    padding: 1vh;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: gray;
+    font-size: 1.4rem;
+    padding: 1vh;
+}
+
+.all-day-container {
+    display: flex;
+}
+
+.day-input {
+    margin: -2vh 3vh;
+}
+
+.all-day {
+    margin-top: -2vh;
+}
+
+.time-input {
+    margin: 3vh 2vh;
+}
+
+.date-input {
+    margin: 3vh 1vh;
+}
+
+/* text */
+
+.create-event-header {
+    text-transform: uppercase;
+    margin: 3vh;
+    font-size: 2rem;
+    color: #00334e;
+}
+
+.time-text {
+    margin: 3vh;
+}
+
+.end-text {
+    margin-left: 3vh;
+    margin-right: 4.3vh;
+    margin-top: 3.8vh;
+}
