@@ -45,13 +45,13 @@
     border-radius: 3px;
     font-family: Arial;
     color: #e8e8e8;
-    font-size: 15px;
+    font-size: 20px;
     background: #00334e;
     padding: 5px 10px 5px 10px;
     text-decoration: none;
     border: none;
     position: flex;
-    margin: 30px 160px 0;
+    margin: 30px 155px 5px;
 }
 
 .register-button:hover {
