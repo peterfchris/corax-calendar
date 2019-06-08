@@ -1,23 +1,32 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import './LeadForm.css'
 
 export class LeadForm extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <h1>Request a Consultation</h1>
-                    <input
-                    placeholder='first name'
-                     />
-                    <input
-                    placeholder='last name' />
-                    <input
-                    placeholder='email' />
-                    <input
-                    placeholder='phone number' />
-                    <button><Link to='/scheduler'>Schedule Consultation</Link></button>
-                </form>
+                <div className='lead-page'>
+                    <div className='lead-container'>
+                        <form>
+                            <h1 className='lead-header'>Request a Consultation</h1>
+                            <input
+                            className='lead-input'
+                            placeholder='first name'
+                            />
+                            <input
+                            className='lead-input'
+                            placeholder='last name' />
+                            <input
+                            className='lead-input'
+                            placeholder='email' />
+                            <input
+                            className='lead-input'
+                            placeholder='phone number' />
+                            <button className='lead-button'>Schedule Consultation</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }
