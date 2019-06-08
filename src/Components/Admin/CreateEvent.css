@@ -71,22 +71,22 @@
     margin: 0 3vh;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder { 
     color: grey;
     font-size: 1.4rem;
     padding: 1vh;
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder { 
     color: gray;
     font-size: 1.4rem;
     padding: 1vh;
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder { 
     color: gray;
     font-size: 1.4rem;
     padding: 1vh;
 }
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder { 
     color: gray;
     font-size: 1.4rem;
     padding: 1vh;

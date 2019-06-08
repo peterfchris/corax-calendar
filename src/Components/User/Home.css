@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.home-page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container {
+    height: 30rem;
+    width: 400px;
+    background: #5588a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3vh;
+}
+
+.home-header {
+    color: #00334e;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    margin-top: -22vh;
+}
+
+.text {
+    color: #e8e8e8;
+    margin: 3vh 0;
+}
+
+.schedule-btn {
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    font-family: Arial;
+    color: #00334e;
+    font-size: 20px;
+    background: #e8e8e8;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+    text-transform: uppercase;
+    position: absolute;
+    margin: 25vh .4vh;
+}
