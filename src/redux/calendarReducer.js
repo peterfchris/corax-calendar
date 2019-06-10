@@ -9,11 +9,6 @@ export function allEvents(events){
     }
 }
 
-export function allMotions(motions){
-
-}
-
-
 
 function calendarReducer(state = initialState, action){
     switch(action.type){

@@ -29,7 +29,7 @@ export class CalendarView extends Component {
   }
 
   handleEvents = e => {
-    Axios.get("/api/getEvents").then(res => {
+    Axios.get("/api/getEvents").then(res => { console.log(res.data)
       this.props.allEvents(res.data);
     });
   };

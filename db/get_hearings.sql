@@ -1,0 +1,1 @@
+select hearing_title as title, hearing_due_date as start from hearing;
