@@ -3,12 +3,7 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
-import {Link} from 'react-router-dom'
 import './Login.css'
-
-// JUNE 17 CHECKLIST
-
-// style component
 
 export class Login extends Component {
     constructor(){
