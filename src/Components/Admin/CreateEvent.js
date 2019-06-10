@@ -12,8 +12,7 @@ export class CreateEvent extends Component {
             startTime: '',
             startDate: '',
             endTime: '',
-            endDate: '',
-            allDay: false
+            endDate: ''
         }
     }
 
@@ -32,6 +31,10 @@ export class CreateEvent extends Component {
         })
         this.props.history.push('/calendar')
     }
+
+    handleCancel = () => {
+        this.props.history.push('/calendar')
+    }
     
     render() {
         return (
@@ -48,17 +51,11 @@ export class CreateEvent extends Component {
                             <button 
                             onClick={this.handleCreateEvent}
                             className='new-event-btn'>Create Event</button>
-                            <button className='cancel-event-btn'>Cancel</button>
+                            <button
+                            onClick={this.handleCancel} 
+                            className='cancel-event-btn'>Cancel</button>
                         </div>
                         <br />
-                        <div className='all-day-container'>
-                            <input
-                            name='allDay'
-                            onChange={this.handleInputChange}
-                            className='day-input'
-                            type='checkbox' />
-                            <p className='all-day'>All Day</p>
-                        </div>
                         <div className='input-container'>
                             <p className='time-text'>Start Time</p>
                             <input
