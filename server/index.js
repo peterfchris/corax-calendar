@@ -39,7 +39,7 @@ app.post('/api/create-event', calendarCtrl.createEvent)
 app.get('/api/get-event/:id', calendarCtrl.getEvent)
 app.get('/api/getEvents', calendarCtrl.getAllEvents)
 app.put('/api/update-event/:id', calendarCtrl.updateEvent)
-app.delete('/api/delete/:event_id', calendarCtrl.deleteEvent)
+app.delete('/api/delete/:id', calendarCtrl.deleteEvent)
 
 // Potential Client Endpoints
 

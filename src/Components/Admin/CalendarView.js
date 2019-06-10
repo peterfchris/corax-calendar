@@ -71,9 +71,7 @@ export class CalendarView extends Component {
   };
 
   handleSaveEdit = () => {
-    // destructure data from state
     const { title, start, end, startDate, endDate, event } = this.state;
-    // create the body object to send to the server w/ info about the updated event
     const body = {
       title,
       start,
@@ -81,19 +79,27 @@ export class CalendarView extends Component {
       startDate,
       endDate
     };
-    // make an axios req to server to send information for the new date
     Axios.put(`/api/update-event/${event.id}`, body).then(res => {
       this.handleEvents();
       this.toggleModal();
     });
   };
 
-  // function to be executed on event click
+  handleDelete = () => {
+    const {event} = this.state
+    Axios.delete(`/api/delete/${event.id}`)
+    .then(res => {
+      this.toggleModal()
+    })
+  }
+
+  handleLogOut = () => {
+    this.props.history.push('/login')
+  }
+
   eventClick = calEvent => {
     console.log(calEvent);
-    // toggle the modal display
     this.toggleModal();
-    // set the calender obj to state
     this.setState({
       event: {
         title: calEvent.title,
@@ -118,8 +124,10 @@ export class CalendarView extends Component {
     return (
       <div>
         <h1>Calendar</h1>
-        <button>
-          <Link to="/login">log out</Link>
+        <button 
+        onClick={this.handleLogOut}
+        className='logout-btn' >
+          log out
         </button>
         <FullCalendar
           id="user-calendar"
@@ -153,6 +161,9 @@ export class CalendarView extends Component {
               <div className="btn-container">
                 <button className="edit-btn" onClick={this.handleSaveEdit}>
                   edit
+                </button>
+                <button className='edit-btn' onClick={this.handleDelete}>
+                  delete
                 </button>
                 <button className="exit-btn" onClick={this.toggleModal}>
                   x

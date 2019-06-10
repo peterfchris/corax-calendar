@@ -14,8 +14,11 @@ module.exports = {
           potential_email,
           potential_phone,
           event_id: null
-        }).catch(err => console.log(err));
-        res.status(200).send("new potential");
+        })
+        .then(dbRes => {
+          res.status(200).send("new potential");
+        })
+        .catch(err => console.log(err));
       },
       
       createConsultation: (req, res) => {
