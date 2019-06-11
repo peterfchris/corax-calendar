@@ -83,8 +83,11 @@ module.exports = {
   },
 
   updateEvent: (req, res) => {
+    console.log(`this is ${req.body}`)
     const { title, start, startDate, endDate, end } = req.body;
     const { id } = req.params;
+    const intId = +id
+    console.log('intId', intId)
     const db = req.app.get("db");
     const newStartDate = `${startDate}T${start}:00`;
     const newEndDate = `${endDate}T${end}:00`;
@@ -93,7 +96,7 @@ module.exports = {
       title,
       start: newStartDate,
       end: newEndDate,
-      id
+      id: intId
     })
       .then(dbRes => {
         res.status(200).send("event updated");
@@ -104,10 +107,28 @@ module.exports = {
   deleteEvent: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
-    db.delete_calendar_event({ id })
+    db.delete_event_details({ id })
       .then(dbRes => {
         res.sendStatus(200);
       })
       .catch(err => console.log(err));
+  },
+
+  deleteHearing: (req, res) => {
+    const db = req.app.get("db");
+    const {id} = req.params
+    db.delete_hearing({id})
+    .then(motion => {
+      return db.delete_motion({id})
+    })
+    .then(response => {
+      return db.delete_response({id})
+    })
+    .then(reply => {
+      return db.delete_reply({id})
+    })
+    .then(dbRes => {
+      res.sendStatus(200)
+    })
   }
 };

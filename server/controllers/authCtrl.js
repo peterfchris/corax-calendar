@@ -44,10 +44,7 @@ module.exports = {
         if (authenticated) {
             session.admin = {
               id: adminFound[0].admin_id, 
-              firstname: adminFound[0].admin_first_name,
-              lastname: adminFound[0].admin_last_name,
               email: adminFound[0].admin_email,
-              username: adminFound[0].username
             }
             res.status(200).send(session.admin)
         } else {

@@ -27,6 +27,11 @@
     font-size: 1.1rem;
 }
 
+.p {
+    color: #00334e;
+    margin: 2vh;
+}
+
 .confirmation-btn {
     -webkit-border-radius: 3;
     -moz-border-radius: 3;

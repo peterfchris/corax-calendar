@@ -29,7 +29,7 @@ export class CalendarView extends Component {
   }
 
   handleEvents = e => {
-    Axios.get("/api/getEvents").then(res => { console.log(res.data)
+    Axios.get("/api/getEvents").then(res => { 
       this.props.allEvents(res.data);
     });
   };
@@ -40,35 +40,35 @@ export class CalendarView extends Component {
     });
   };
 
-  handleChangeTitle = event => {
+  handleChange = event => {
     this.setState({
-      title: event.target.value
+      [event.target.name]: event.target.value
     });
   };
 
-  handleStartDateChange = event => {
-    this.setState({
-      startDate: event.target.value
-    });
-  };
+  // handleStartDateChange = event => {
+  //   this.setState({
+  //     startDate: event.target.value
+  //   });
+  // };
 
-  handleEndDateChange = event => {
-    this.setState({
-      endDate: event.target.value
-    });
-  };
+  // handleEndDateChange = event => {
+  //   this.setState({
+  //     endDate: event.target.value
+  //   });
+  // };
 
-  handleStartChange = event => {
-    this.setState({
-      start: event.target.value
-    });
-  };
+  // handleStartChange = event => {
+  //   this.setState({
+  //     start: event.target.value
+  //   });
+  // };
 
-  handleEndChange = event => {
-    this.setState({
-      end: event.target.value
-    });
-  };
+  // handleEndChange = event => {
+  //   this.setState({
+  //     end: event.target.value
+  //   });
+  // };
 
   handleSaveEdit = () => {
     const { title, start, end, startDate, endDate, event } = this.state;
@@ -79,6 +79,8 @@ export class CalendarView extends Component {
       startDate,
       endDate
     };
+    console.log('body', body)
+    console.log('event', event)
     Axios.put(`/api/update-event/${event.id}`, body).then(res => {
       this.handleEvents();
       this.toggleModal();
@@ -138,7 +140,7 @@ export class CalendarView extends Component {
             right: "month,basicWeek,basicDay"
           }}
           navLinks={true}
-          editable={true}
+          editable={true} //2019-06-20T00:00:00:00
           events={this.props.calendar}
           selectable={true}
           remove={true}
@@ -149,15 +151,15 @@ export class CalendarView extends Component {
             <div className="modal">
               {this.state.event.title}
               <p>Select a new Title:</p>
-              <input type="text" onChange={this.handleChangeTitle} />
+              <input name='title' type="text" onChange={this.handleChange} />
               <p>Select a Start Date:</p>
-              <input type="date" onChange={this.handleStartDateChange} />
+              <input name='startDate' type="date" onChange={this.handleChange} />
               <p>Select a Start Time:</p>
-              <input type="time" onChange={this.handleStartChange} />
+              <input name='start' type="time" onChange={this.handleChange} />
               <p>Select a End Date:</p>
-              <input type="date" onChange={this.handleEndDateChange} />
+              <input name='endDate' type="date" onChange={this.handleChange} />
               <p>Select an End Time:</p>
-              <input type="time" onChange={this.handleEndChange} />
+              <input name='end' type="time" onChange={this.handleChange} />
               <div className="btn-container">
                 <button className="edit-btn" onClick={this.handleSaveEdit}>
                   edit

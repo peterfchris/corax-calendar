@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
 import './Home.css'
 
+
+
+
 export class Home extends Component {
+    constructor(){
+        super()
+    }
+
+    handleClick = () => {
+        this.props.history.push('/lead-form')
+    }
+
     render() {
         return (
             <div>
@@ -15,7 +25,9 @@ export class Home extends Component {
                         <p className='text'>Ut enim ad minim veniam, quis nostrud 
                         exercitation ullamco laboris nisi ut aliquip ex ea commodo 
                         consequat.</p>
-                        <button className='schedule-btn' >Schedule a Free Consultation</button>
+                        <button className='schedule-btn' onClick={this.handleClick}>
+                            Schedule a Free Consultation
+                        </button>
                     </div>
                 </div>
             </div>

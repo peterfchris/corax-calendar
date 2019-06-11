@@ -33,7 +33,13 @@ export class Login extends Component {
     }
 
     handleCalendarLogin = () => {
-        this.props.history.push('/calendar')
+        // e.preventDefault()
+        const {email, password} = this.state
+        axios.post('/auth/login', {email, password})
+        .then((res) => {
+            this.props.history.push('/calendar')
+        })
+        .catch(err => alert(err))
     }
 
     render() {
