@@ -35,7 +35,7 @@ export class Login extends Component {
     handleCalendarLogin = () => {
         // e.preventDefault()
         const {email, password} = this.state
-        axios.post('/auth/login', {email, password})
+        axios.post('/auth/login', {admin_email: email, password})
         .then((res) => {
             this.props.history.push('/calendar')
         })

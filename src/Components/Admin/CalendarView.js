@@ -46,30 +46,6 @@ export class CalendarView extends Component {
     });
   };
 
-  // handleStartDateChange = event => {
-  //   this.setState({
-  //     startDate: event.target.value
-  //   });
-  // };
-
-  // handleEndDateChange = event => {
-  //   this.setState({
-  //     endDate: event.target.value
-  //   });
-  // };
-
-  // handleStartChange = event => {
-  //   this.setState({
-  //     start: event.target.value
-  //   });
-  // };
-
-  // handleEndChange = event => {
-  //   this.setState({
-  //     end: event.target.value
-  //   });
-  // };
-
   handleSaveEdit = () => {
     const { title, start, end, startDate, endDate, event } = this.state;
     const body = {
@@ -140,7 +116,7 @@ export class CalendarView extends Component {
             right: "month,basicWeek,basicDay"
           }}
           navLinks={true}
-          editable={true} //2019-06-20T00:00:00:00
+          editable={true} 
           events={this.props.calendar}
           selectable={true}
           remove={true}
@@ -162,7 +138,7 @@ export class CalendarView extends Component {
               <input name='end' type="time" onChange={this.handleChange} />
               <div className="btn-container">
                 <button className="edit-btn" onClick={this.handleSaveEdit}>
-                  edit
+                  save
                 </button>
                 <button className='edit-btn' onClick={this.handleDelete}>
                   delete

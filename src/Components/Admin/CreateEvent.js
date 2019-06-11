@@ -89,6 +89,9 @@ export class CreateEvent extends Component {
                 placeholder="Event Title"
               />
               <div id="btn-container">
+                <button onClick={this.handleCreateEvent}>
+                  Create Event
+                </button>
                 <button
                   onClick={event => {
                     event.preventDefault();
@@ -98,7 +101,7 @@ export class CreateEvent extends Component {
                   }}
                   className="new-event-btn"
                 >
-                  Next Step
+                  Schedule Hearing
                 </button>
                 <button
                   onClick={this.handleCancel}

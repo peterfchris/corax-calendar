@@ -42,9 +42,6 @@ export class UserCalendar extends Component {
               <br/>
               <input
               type='checkbox' />
-              <p>I would like my consultation to be over the phone (we will call you!)</p>
-              <input
-              type='checkbox' />
               <p>I would like you to email me a reminder</p>
               <input
               type='checkbox' />
