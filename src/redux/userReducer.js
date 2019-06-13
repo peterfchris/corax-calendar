@@ -1,8 +1,9 @@
 const initialState = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: ''
+    potential_first: '',
+    potential_last: '',
+    potential_email: '',
+    potential_phone: '',
+    potential_id: null
 }
 
 const ADD_USER = 'ADD_USER'
@@ -17,8 +18,8 @@ export function addUser(user){
 function userReducer(state = initialState, action){
     switch(action.type){
         case ADD_USER:
-            const {firstname, lastname, email, phone} = action.payload
-            return  {firstname, lastname, email, phone}
+            const {potential_first, potential_last, potential_email, potential_phone, potential_id} = action.payload
+            return  {potential_first, potential_last, potential_email, potential_phone, potential_id}
         default: 
             return state
     }

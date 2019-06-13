@@ -23,6 +23,8 @@ export class LeadForm extends Component {
         await Axios
             .post('/api/client-info', {potential_first: firstname, potential_last: lastname, potential_email: email, potential_phone: phone})
             .then((res) => {
+                console.log('res.data', res.data[0])
+                this.props.addUser(res.data[0])
                 this.props.history.push('/scheduler')
             })
             .catch(err => console.log('err', err))

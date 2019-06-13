@@ -13,7 +13,7 @@ import CreateHearing from './Components/Admin/CreateHearing'
 
 import Home from './Components/User/Home'
 import LeadForm from './Components/User/LeadForm'
-import UserCalendar from './Components/User/UserCalendar'
+import Scheduler from './Components/User/Scheduler'
 import Confirmation from './Components/User/Confirmation'
 
 export default (
@@ -21,7 +21,7 @@ export default (
         {/* User Routes */}
         <Route exact path='/' component={Home} />
         <Route path='/lead-form' component={LeadForm} />
-        <Route path='/scheduler' component={UserCalendar} />
+        <Route path='/scheduler' component={Scheduler} />
         <Route path='/confirmation' component={Confirmation} />
         {/* Admin Routes */}
         <Route path='/login' component={Login} />

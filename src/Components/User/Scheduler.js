@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import './UserCalendar.css'
+import Verify from './Verify'
+import axios from 'axios'
+import './Scheduler.css'
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
+import {connect} from 'react-redux'
 
 export class UserCalendar extends Component {
   constructor() {
@@ -11,17 +14,27 @@ export class UserCalendar extends Component {
       startDate: '',
       startTime: '',
       endDate: '',
-      endTime: '',
-      potentialName: ''
+      endTime: ''
     };
   }
 
-  handleCreateEvent = () => {
+  handleCreateEvent = event => {
+    event.preventDefault()
+    const {
+        startTime,
+        startDate,
+        endTime,
+        endDate
+    } = this.state
 
-  }
-
-  handleEmail = (e) => {
-
+    axios.post('/api/create-consultation', {
+        potential_first: this.props.user.potential_first,
+        potential_last: this.props.user.potential_last,
+        start: `${startDate}T${startTime}:00`,
+        end: `${endDate}T${endTime}:00`,
+        potential_id: this.props.user.id 
+    })
+    this.props.history.push('/confirmation')
   }
 
   handleInputChange = (e) => {
@@ -30,13 +43,15 @@ export class UserCalendar extends Component {
     })
   }
 
-  toggleModal = () => {
+  toggleModal = (e) => {
+    e.preventDefault()
     this.setState({
       showModal: !this.state.showModal
     });
   };
 
   render() {
+    console.log(this.props.user)
     return (
       <div>
         <h1>Pick a date and time</h1>
@@ -61,34 +76,22 @@ export class UserCalendar extends Component {
             type='time'
             onChange={this.handleInputChange}
             />
-          <input 
-            name='email'
-            type='checkbox' 
-            onChange={this.handleEmail}
-            />
-          <p>I would like an email notification</p>
           <button>Submit</button>
         </form>
-        {this.state.showModal ?(
-          <div className='modal-container'>
-            <div className='modal'>
-              <h3>Is this correct?</h3>
-              {this.state.startDate}
-              {this.state.startTime}
-              {this.state.endDate}
-              {this.state.endTime}
-              <button onClick={this.handleCreateEvent}>
-                Yes
-              </button>
-              <button onClick={this.toggleModal}>
-                No
-              </button>
-            </div>
-          </div>
+        {this.state.showModal ? (
+          <Verify
+            state={this.state}
+            handleCreateEvent={this.handleCreateEvent}
+            toggleModal={this.toggleModal}
+          />
         ): null}
       </div>
     );
   }
 }
 
-export default UserCalendar;
+const mapStateToProps = (reduxState) => {
+  return reduxState
+}
+
+export default connect(mapStateToProps)(UserCalendar);

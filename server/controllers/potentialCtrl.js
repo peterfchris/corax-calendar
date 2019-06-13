@@ -16,42 +16,34 @@ module.exports = {
           event_id: null
         })
         .then(dbRes => {
-          res.status(200).send("new potential");
+          res.status(200).send(dbRes);
         })
         .catch(err => console.log(err));
       },
       
-      createConsultation: (req, res) => {
+      createConsultation: async (req, res) => {
         const {
+          potential_id,
           potential_first,
           potential_last,
-          potential_email,
-          potential_phone,
-          title, 
           start,
           end
         } = req.body;
         const db = req.app.get("db");
-        db.create_event({ title, start, end })
+        const potentialTitle = {title: `Potential Client Consultation - ${potential_first} ${potential_last}`}
+        const {title} = potentialTitle
+        await db.create_consultation({ title, start, end })
           .then(dbResponse => {
             const { event_id } = dbResponse[0];
-            console.log(event_id);
-            return db.create_potential_client({
-              potential_first,
-              potential_last,
-              potential_email,
-              potential_phone,
+            console.log(dbResponse);
+            return db.update_consultation({
+              potential_id,
               event_id
             });
           })
-          .then(() => {
-            return db.get_consultation({ potential_email });
-          })
-          .then(consultationData => {
-            res.send(consultationData);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+          .catch(err => {res.status(500).send(`System failure`)});
       }
 }
+
+// make a new method that contains create consultation, where on front end it will hit 
+// with the update 
