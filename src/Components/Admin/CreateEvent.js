@@ -1,154 +1,124 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import axios from 'axios'
 import "./CreateEvent.css";
-import Axios from "axios";
 
 export class CreateEvent extends Component {
-  constructor() {
-    super();
+    constructor(){
+        super()
 
-    this.state = {
-      step: false,
-      title: "",
-      startTime: "",
-      startDate: "",
-      endTime: "",
-      endDate: "",
-      hearingDueDate: "",
-      hearingTitle: ""
-    };
-  }
+        this.state = {
+            title: '',
+            startTime: '',
+            startDate: '',
+            endTime: '',
+            endDate: ''
+        }
+    }
 
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+    handleInputChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    } 
 
-  handleCreateEvent = event => {
-    event.preventDefault();
+    handleCreateEvent = event => {
+        event.preventDefault()
+        const {
+            title,
+            startTime,
+            startDate,
+            endTime,
+            endDate
+        } = this.state
 
-    const {
-      title,
-      startTime,
-      startDate,
-      endTime,
-      endDate,
-      hearingDueDate,
-      hearingTitle
-    } = this.state;
+        axios.post('/api/create-event', {
+            title,
+            start: `${startDate}T${startTime}:00`,
+            end: `${endDate}T${endTime}:00`
+        })
+        this.props.history.push('/calendar')
+    }
 
-    // getting a date object that had the hearing date
-    const copyHearingDate = new Date(hearingDueDate);
+    handleCancel = (e) => {
+        e.preventDefault()
+        this.props.history.push('/calendar')
+    }
 
-    Axios.post("/api/create-event", {
-      title,
-      start: `${startDate}T${startTime}:00`,
-      end: `${endDate}T${endTime}:00`,
-      hearingDueDate,
-      hearingTitle,
-      replyDate: new Date(copyHearingDate.setDate(copyHearingDate.getDate() - 7)),
-      responseDate: new Date( copyHearingDate.setDate(copyHearingDate.getDate() - 7)),
-      motionDate: new Date(copyHearingDate.setDate(copyHearingDate.getDate() - 14))
-    });
-    this.props.history.push("/calendar");
-  };
 
-  handleCancel = event => {
-    event.preventDefault();
-    this.props.history.push("/calendar");
-  };
-
-  render() {
-    console.log(this.state);
-    return (
-      <div>
-        {this.state.step ? (
-          <div>
-            <form onSubmit={this.handleCreateEvent}>
-              <input
-                name="hearingTitle"
-                type="text"
-                onChange={this.handleInputChange}
-              />
-              <input
-                name="hearingDueDate"
-                type="date"
-                onChange={this.handleInputChange}
-              />
-              <button type="submit">Create Event</button>
-            </form>
-          </div>
-        ) : (
-          <div className="new-event-container">
-            <h1 className="create-event-header">Create Event</h1>
-            <form>
-              <input
-                name="title"
-                onChange={this.handleInputChange}
-                className="title-input"
-                placeholder="Event Title"
-              />
-              <div id="btn-container">
-                <button onClick={this.handleCreateEvent}>
-                  Create Event
-                </button>
+    render() {
+        return (
+            <div>
+              <div  className="new-event-container">
+                <h1 className="create-event-header">Create Event</h1>
+                <form onSubmit={e => {
+                    debugger;
+                    this.handleCreateEvent(e);
+                }}>
+                <input
+                    name="title"
+                    type="text"
+                    placeholder='Event Title'
+                    className="title-input"
+                    onChange={this.handleInputChange}
+                />
+                <div id="btn-container">
                 <button
                   onClick={event => {
                     event.preventDefault();
-                    this.setState({
-                      step: true
-                    });
+                    this.props.history.push('/new-hearing')
                   }}
                   className="new-event-btn"
                 >
                   Schedule Hearing
                 </button>
-                <button
-                  onClick={this.handleCancel}
+                  <button 
+                  className="new-event-btn"
+                  type='submit'>
+                      Create Event
+                  </button>
+                  <button 
                   className="cancel-event-btn"
-                >
-                  Cancel
-                </button>
-              </div>
-              <br />
-              <div className="input-container">
+                  onClick={this.handleCancel}>
+                    cancel
+                  </button>
+                </div>
+                <div className="input-container">
                 <p className="time-text">Start Time</p>
                 <input
-                  name="startTime"
-                  onChange={this.handleInputChange}
-                  className="time-input"
-                  type="time"
+                    name="startTime"
+                    type="time"
+                    className="time-input"
+                    onChange={this.handleInputChange}
                 />
                 <p className="time-text">Start Date</p>
                 <input
-                  name="startDate"
-                  onChange={this.handleInputChange}
-                  className="date-input"
-                  type="date"
+                    name="startDate"
+                    type="date"
+                    className="date-input"
+                    onChange={this.handleInputChange}
                 />
-              </div>
-              <div className="input-container-2">
+                </div>
+                <div className='input-container-2'>
                 <p className="end-text">End Time</p>
                 <input
-                  name="endTime"
-                  onChange={this.handleInputChange}
-                  className="time-input"
-                  type="time"
+                    name="endTime"
+                    type="time"
+                    className="time-input"
+                    onChange={this.handleInputChange}
                 />
                 <p className="end-text">End Date</p>
                 <input
-                  name="endDate"
-                  onChange={this.handleInputChange}
-                  className="date-input"
-                  type="date"
+                    name="endDate"
+                    type="date"
+                    className="date-input"
+                    onChange={this.handleInputChange}
                 />
+                </div>
+                </form>
               </div>
-            </form>
-          </div>
-        )}
-      </div>
-    );
-  }
+            </div>
+        )
+    }
 }
 
-export default CreateEvent;
+export default CreateEvent

@@ -1,2 +1,2 @@
 delete from hearing
-where hearing_id = ${id};
+where hearing_id = ${hearing_id};

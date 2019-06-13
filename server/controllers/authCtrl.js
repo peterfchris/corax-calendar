@@ -37,9 +37,7 @@ module.exports = {
         const db = req.app.get("db");
         const { session } = req;
         const {admin_email, password} = req.body
-        console.log('admin_email', admin_email)
         const adminFound = await db.check_admin_email({admin_email})
-        console.log('adminFound', adminFound)
         if(!adminFound[0]) return res.status(404).send(`Admin does not exist`)
         const authenticated = bcrypt.compareSync(password, adminFound[0].password)
         if (authenticated) {

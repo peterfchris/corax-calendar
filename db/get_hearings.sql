@@ -1,1 +1,1 @@
-select hearing_title as title, hearing_due_date as start from hearing;
+select hearing_title as title, hearing_due_date as start, hearing_id from hearing;

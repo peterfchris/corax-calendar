@@ -7,6 +7,7 @@ import Login from './Components/Admin/Login'
 import Register from './Components/Admin/Register'
 import CalendarView from './Components/Admin/CalendarView'
 import CreateEvent from './Components/Admin/CreateEvent'
+import CreateHearing from './Components/Admin/CreateHearing'
 
 // User Components
 
@@ -26,6 +27,7 @@ export default (
         <Route path='/login' component={Login} />
         <Route path='/Register' component={Register} />
         <Route path='/calendar' component={CalendarView} />
+        <Route path='/new-hearing' component={CreateHearing} />
         <Route path='/new-event' component={CreateEvent} />
     </Switch>
 )

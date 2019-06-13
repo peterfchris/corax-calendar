@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import FullCalendar from "fullcalendar-reactwrapper";
-import { Link } from "react-router-dom";
 import './UserCalendar.css'
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
 
@@ -8,8 +6,28 @@ export class UserCalendar extends Component {
   constructor() {
     super();
     this.state = {
-      events: []
+      events: [],
+      showModal: false,
+      startDate: '',
+      startTime: '',
+      endDate: '',
+      endTime: '',
+      potentialName: ''
     };
+  }
+
+  handleCreateEvent = () => {
+
+  }
+
+  handleEmail = (e) => {
+
+  }
+
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   toggleModal = () => {
@@ -21,34 +39,53 @@ export class UserCalendar extends Component {
   render() {
     return (
       <div>
-        <FullCalendar
-          id="user-calendar"
-          header={{
-            left: "prev,next today",
-            center: "title",
-            right: "month,basicWeek,basicDay"
-          }}
-          navLinks={true}
-          editable={true}
-          events={this.state.events}
-        />
-        {this.state.showModal ? (
-          <div className="verify-container">
-            <div className="verify">
-              <h1>Is this correct?</h1>
-              <h3>Appointment Info</h3>
-              <button><Link to='/confirmation'>Yes</Link></button>
-              <button onClick={this.toggleModal}>No</button>
-              <br/>
-              <input
-              type='checkbox' />
-              <p>I would like you to email me a reminder</p>
-              <input
-              type='checkbox' />
-              <p>I would like you to text me a reminder</p>
+        <h1>Pick a date and time</h1>
+        <form onSubmit={this.toggleModal}>
+          <input 
+            name='startDate'
+            type='date'
+            onChange={this.handleInputChange} 
+            />
+          <input 
+            name='startTime'
+            type='time'
+            onChange={this.handleInputChange} 
+            />
+          <input 
+            name='endDate'
+            type='date'
+            onChange={this.handleInputChange} 
+            />
+          <input 
+            name='endTime'
+            type='time'
+            onChange={this.handleInputChange}
+            />
+          <input 
+            name='email'
+            type='checkbox' 
+            onChange={this.handleEmail}
+            />
+          <p>I would like an email notification</p>
+          <button>Submit</button>
+        </form>
+        {this.state.showModal ?(
+          <div className='modal-container'>
+            <div className='modal'>
+              <h3>Is this correct?</h3>
+              {this.state.startDate}
+              {this.state.startTime}
+              {this.state.endDate}
+              {this.state.endTime}
+              <button onClick={this.handleCreateEvent}>
+                Yes
+              </button>
+              <button onClick={this.toggleModal}>
+                No
+              </button>
             </div>
           </div>
-        ) : null}
+        ): null}
       </div>
     );
   }

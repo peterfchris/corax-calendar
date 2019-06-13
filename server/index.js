@@ -36,10 +36,12 @@ app.get('/auth/logout', authCtrl.logout)
 // Calendar Endpoints
 
 app.post('/api/create-event', calendarCtrl.createEvent)
+app.post('/api/create-hearing', calendarCtrl.createHearing)
 app.get('/api/get-event/:id', calendarCtrl.getEvent)
 app.get('/api/getEvents', calendarCtrl.getAllEvents)
 app.put('/api/update-event/:id', calendarCtrl.updateEvent)
 app.delete('/api/delete/:id', calendarCtrl.deleteEvent)
+app.delete('/api/delete-hearing/:id', calendarCtrl.deleteHearing)
 
 // Potential Client Endpoints
 

@@ -4,7 +4,6 @@ import { withRouter, Link } from "react-router-dom";
 import { allEvents } from "../../redux/calendarReducer";
 import { connect } from "react-redux";
 
-
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
 import Axios from "axios";
 import "./CalendarView.css";
@@ -29,7 +28,8 @@ export class CalendarView extends Component {
   }
 
   handleEvents = e => {
-    Axios.get("/api/getEvents").then(res => { 
+    Axios.get("/api/getEvents").then(res => {
+      console.log(res.data);
       this.props.allEvents(res.data);
     });
   };
@@ -55,8 +55,8 @@ export class CalendarView extends Component {
       startDate,
       endDate
     };
-    console.log('body', body)
-    console.log('event', event)
+    console.log("body", body);
+    console.log("event", event);
     Axios.put(`/api/update-event/${event.id}`, body).then(res => {
       this.handleEvents();
       this.toggleModal();
@@ -64,16 +64,23 @@ export class CalendarView extends Component {
   };
 
   handleDelete = () => {
-    const {event} = this.state
-    Axios.delete(`/api/delete/${event.id}`)
-    .then(res => {
-      this.toggleModal()
-    })
-  }
+    const { event } = this.state;
+    console.log("before req", event);
+    event.hearing_id
+      ? Axios.delete(`/api/delete-hearing/${event.hearing_id}`).then(res => {
+          console.log("hit hearing deletion");
+          this.toggleModal();
+        })
+      : Axios.delete(`/api/delete/${event.id}`).then(res => {
+          console.log("hit event deletion");
+          this.toggleModal();
+        });
+  };
 
   handleLogOut = () => {
-    this.props.history.push('/login')
-  }
+    Axios.get("/auth/logout");
+    this.props.history.push("/login");
+  };
 
   eventClick = calEvent => {
     console.log(calEvent);
@@ -98,13 +105,10 @@ export class CalendarView extends Component {
       }
     };
 
-    console.log(this.state.start);
     return (
       <div>
         <h1>Calendar</h1>
-        <button 
-        onClick={this.handleLogOut}
-        className='logout-btn' >
+        <button onClick={this.handleLogOut} className="logout-btn">
           log out
         </button>
         <FullCalendar
@@ -116,7 +120,7 @@ export class CalendarView extends Component {
             right: "month,basicWeek,basicDay"
           }}
           navLinks={true}
-          editable={true} 
+          editable={true}
           events={this.props.calendar}
           selectable={true}
           remove={true}
@@ -127,20 +131,24 @@ export class CalendarView extends Component {
             <div className="modal">
               {this.state.event.title}
               <p>Select a new Title:</p>
-              <input name='title' type="text" onChange={this.handleChange} />
+              <input name="title" type="text" onChange={this.handleChange} />
               <p>Select a Start Date:</p>
-              <input name='startDate' type="date" onChange={this.handleChange} />
+              <input
+                name="startDate"
+                type="date"
+                onChange={this.handleChange}
+              />
               <p>Select a Start Time:</p>
-              <input name='start' type="time" onChange={this.handleChange} />
+              <input name="start" type="time" onChange={this.handleChange} />
               <p>Select a End Date:</p>
-              <input name='endDate' type="date" onChange={this.handleChange} />
+              <input name="endDate" type="date" onChange={this.handleChange} />
               <p>Select an End Time:</p>
-              <input name='end' type="time" onChange={this.handleChange} />
+              <input name="end" type="time" onChange={this.handleChange} />
               <div className="btn-container">
                 <button className="edit-btn" onClick={this.handleSaveEdit}>
                   save
                 </button>
-                <button className='edit-btn' onClick={this.handleDelete}>
+                <button className="edit-btn" onClick={this.handleDelete}>
                   delete
                 </button>
                 <button className="exit-btn" onClick={this.toggleModal}>

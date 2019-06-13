@@ -1,46 +1,54 @@
 module.exports = {
   createEvent: (req, res) => {
-    const {
-      title,
-      start,
-      end,
-      hearingDueDate,
-      hearingTitle,
-      motionDate,
-      responseDate,
-      replyDate
-    } = req.body;
-
-    const newMotionDate = motionDate.replace("T00", "T12");
-    const newResponseDate = responseDate.replace("T00", "T12");
-    const newReplyDate = replyDate.replace("T00", "T12");
-
+    const { title, start, end } = req.body;
     const db = req.app.get("db");
     db.create_event({
       title,
       start,
       end
     })
-      .then(eventId => {
-        return db.create_event_hearing({
-          event_id: eventId[0].event_id,
-          hearing_title: hearingTitle,
-          hearing_due_date: hearingDueDate
-        });
-      })
-      .then(hearingId => {
-        return db.create_event_motion({
-          hearing_id: hearingId[0].hearing_id,
-          motion_title: `Motion to ${hearingTitle}`,
-          motion_due_date: newMotionDate,
-          response_title: `Response to ${hearingTitle}`,
-          response_due_date: newResponseDate,
-          reply_title: `Reply to ${hearingTitle}`,
-          reply_due_date: newReplyDate
-        });
-      })
-      .then(() => res.status(200).send("event created"))
-      .catch(err => console.log(err));
+    .then(() => res.status(200).send("event created"))
+    .catch(err => console.log(err));
+    },
+    
+    createHearing: (req, res) => {
+      console.log('createHearing')
+      const {
+        title,
+        start,
+        end,
+        hearingTitle,
+        motionDate,
+        responseDate,
+        replyDate
+      } = req.body;
+      
+      // const newMotionDate = motionDate("T00", "T12");
+      // const newResponseDate = responseDate.replace("T00", "T12");
+      // const newReplyDate = replyDate.replace("T00", "T12");
+      
+      const db = req.app.get("db");
+      db.create_event({ title, start, end })
+          .then(eventId => {
+            return db.create_event_hearing({
+              event_id: eventId[0].event_id,
+              hearing_title: hearingTitle,
+              hearing_due_date: start
+            });
+          })
+          .then(hearingId => {
+            return db.create_event_motion({
+              hearing_id: hearingId[0].hearing_id,
+              motion_title: `Motion to ${hearingTitle}`,
+              motion_due_date: motionDate,
+              response_title: `Response to ${hearingTitle}`,
+              response_due_date: responseDate,
+              reply_title: `Reply to ${hearingTitle}`,
+              reply_due_date: replyDate
+          });
+        })
+    .then(() => res.status(200).send('hearing created'))
+    .catch(err => console.log(err))
   },
 
   getEvent: async (req, res) => {
@@ -60,38 +68,37 @@ module.exports = {
     db.get_all_events()
       .then(events => {
         allEvents = [...events];
-        return db.get_motions()
+        return db.get_motions();
       })
-      
+
       .then(motions => {
         allEvents = [...allEvents, ...motions];
-        return db.get_replies()
+        return db.get_replies();
       })
       .then(replies => {
-        allEvents = [...allEvents, ...replies]
-        return db.get_responses()
+        allEvents = [...allEvents, ...replies];
+        return db.get_responses();
       })
       .then(responses => {
         allEvents = [...allEvents, ...responses];
-        return db.get_hearings()
+        return db.get_hearings();
       })
       .then(hearings => {
         allEvents = [...allEvents, ...hearings];
         res.status(200).send(allEvents);
       })
-      .catch(err => console.log(err));    
+      .catch(err => {res.status(500).send(`System failure`)});
   },
 
   updateEvent: (req, res) => {
-    console.log(`this is ${req.body}`)
+    console.log(`this is ${req.body}`);
     const { title, start, startDate, endDate, end } = req.body;
     const { id } = req.params;
-    const intId = +id
-    console.log('intId', intId)
+    const intId = +id;
+    console.log("intId", intId);
     const db = req.app.get("db");
     const newStartDate = `${startDate}T${start}:00`;
     const newEndDate = `${endDate}T${end}:00`;
-
     db.update_event({
       title,
       start: newStartDate,
@@ -116,19 +123,19 @@ module.exports = {
 
   deleteHearing: (req, res) => {
     const db = req.app.get("db");
-    const {id} = req.params
-    db.delete_hearing({id})
-    .then(motion => {
-      return db.delete_motion({id})
-    })
-    .then(response => {
-      return db.delete_response({id})
-    })
-    .then(reply => {
-      return db.delete_reply({id})
-    })
-    .then(dbRes => {
-      res.sendStatus(200)
-    })
+    const { id } = req.params;
+    db.delete_hearing({ hearing_id: id })
+      .then(motion => {
+        return db.delete_motion({ hearing_id: id });
+      })
+      .then(response => {
+        return db.delete_response({ hearing_id: id });
+      })
+      .then(reply => {
+        return db.delete_reply({ hearing_id: id });
+      })
+      .then(dbRes => {
+        res.sendStatus(200);
+      });
   }
 };
