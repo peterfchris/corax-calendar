@@ -5,9 +5,6 @@ import './Home.css'
 
 
 export class Home extends Component {
-    constructor(){
-        super()
-    }
 
     handleClick = () => {
         this.props.history.push('/lead-form')

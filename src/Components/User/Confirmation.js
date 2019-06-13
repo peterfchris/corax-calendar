@@ -3,9 +3,6 @@ import './Confirmation.css'
 
 
 export class Confirmation extends Component {
-    constructor(){
-        super()
-    }
 
     handleClick = () => {
         this.props.history.push('/')

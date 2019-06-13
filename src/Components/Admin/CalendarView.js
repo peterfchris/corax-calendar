@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FullCalendar from "fullcalendar-reactwrapper";
-import { withRouter, Link } from "react-router-dom";
+import UpdateEvent from './UpdateEvent'
+import { withRouter } from "react-router-dom";
 import { allEvents } from "../../redux/calendarReducer";
 import { connect } from "react-redux";
 
@@ -127,37 +128,17 @@ export class CalendarView extends Component {
           eventClick={calEvent => this.eventClick(calEvent)}
         />
         {this.state.showModal ? (
-          <div className="modal-container">
-            <div className="modal">
-              {this.state.event.title}
-              <p>Select a new Title:</p>
-              <input name="title" type="text" onChange={this.handleChange} />
-              <p>Select a Start Date:</p>
-              <input
-                name="startDate"
-                type="date"
-                onChange={this.handleChange}
-              />
-              <p>Select a Start Time:</p>
-              <input name="start" type="time" onChange={this.handleChange} />
-              <p>Select a End Date:</p>
-              <input name="endDate" type="date" onChange={this.handleChange} />
-              <p>Select an End Time:</p>
-              <input name="end" type="time" onChange={this.handleChange} />
-              <div className="btn-container">
-                <button className="edit-btn" onClick={this.handleSaveEdit}>
-                  save
-                </button>
-                <button className="edit-btn" onClick={this.handleDelete}>
-                  delete
-                </button>
-                <button className="exit-btn" onClick={this.toggleModal}>
-                  x
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
+            <UpdateEvent
+            handleSaveEdit={this.handleSaveEdit}
+            handleDelete={this.handleDelete}
+            handleChange={this.handleChange}
+            toggleModal={this.toggleModal}
+            state={this.state}
+            handleEvents={this.handleEvents}
+             />
+          ) 
+          : 
+          null}
       </div>
     );
   }
