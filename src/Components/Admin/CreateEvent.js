@@ -51,7 +51,6 @@ export class CreateEvent extends Component {
               <div  className="new-event-container">
                 <h1 className="create-event-header">Create Event</h1>
                 <form onSubmit={e => {
-                    debugger;
                     this.handleCreateEvent(e);
                 }}>
                 <input

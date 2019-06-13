@@ -17,33 +17,28 @@ module.exports = {
         title,
         start,
         end,
-        hearingTitle,
         motionDate,
         responseDate,
         replyDate
       } = req.body;
-      
-      // const newMotionDate = motionDate("T00", "T12");
-      // const newResponseDate = responseDate.replace("T00", "T12");
-      // const newReplyDate = replyDate.replace("T00", "T12");
       
       const db = req.app.get("db");
       db.create_event({ title, start, end })
           .then(eventId => {
             return db.create_event_hearing({
               event_id: eventId[0].event_id,
-              hearing_title: hearingTitle,
+              hearing_title: title,
               hearing_due_date: start
             });
           })
           .then(hearingId => {
             return db.create_event_motion({
               hearing_id: hearingId[0].hearing_id,
-              motion_title: `Motion to ${hearingTitle}`,
+              motion_title: `Motion to ${title}`,
               motion_due_date: motionDate,
-              response_title: `Response to ${hearingTitle}`,
+              response_title: `Response to ${title}`,
               response_due_date: responseDate,
-              reply_title: `Reply to ${hearingTitle}`,
+              reply_title: `Reply to ${title}`,
               reply_due_date: replyDate
           });
         })
@@ -70,7 +65,6 @@ module.exports = {
         allEvents = [...events];
         return db.get_motions();
       })
-
       .then(motions => {
         allEvents = [...allEvents, ...motions];
         return db.get_replies();
@@ -81,10 +75,6 @@ module.exports = {
       })
       .then(responses => {
         allEvents = [...allEvents, ...responses];
-        return db.get_hearings();
-      })
-      .then(hearings => {
-        allEvents = [...allEvents, ...hearings];
         res.status(200).send(allEvents);
       })
       .catch(err => {res.status(500).send(`System failure`)});

@@ -1,1 +1,1 @@
-select response_title as response, response_due_date as start, hearing_id from responses;
+select response_title as title, response_due_date as start, hearing_id from responses;

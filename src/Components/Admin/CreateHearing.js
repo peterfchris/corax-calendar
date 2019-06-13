@@ -30,8 +30,7 @@ export class CreateHearing extends Component {
       startDate,
       endTime,
       endDate,
-      hearingDueDate,
-      hearingTitle
+      hearingDueDate
     } = this.state;
     const copyHearingDate = new Date(startDate);
     const replyDate = new Date(copyHearingDate.setDate(copyHearingDate.getDate() - 7)).toISOString().slice(0, 10)
@@ -42,7 +41,6 @@ export class CreateHearing extends Component {
       start: `${startDate}T${startTime}:00`,
       end: `${endDate}T${endTime}:00`,
       hearingDueDate,
-      hearingTitle,
       replyDate,
       responseDate,
       motionDate
@@ -58,7 +56,7 @@ export class CreateHearing extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(`hearingTitle`, this.hearingTitle);
     return (
       <div>
           <div>
