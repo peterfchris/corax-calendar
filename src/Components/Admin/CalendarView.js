@@ -47,7 +47,7 @@ export class CalendarView extends Component {
     });
   };
 
-  handleSaveEdit = () => {
+  handleSaveEdit = async () => {
     const { title, start, end, startDate, endDate, event } = this.state;
     const body = {
       title,
@@ -58,24 +58,20 @@ export class CalendarView extends Component {
     };
     console.log("body", body);
     console.log("event", event);
-    Axios.put(`/api/update-event/${event.id}`, body).then(res => {
-      this.handleEvents();
+    await Axios.put(`/api/update-event/${event.id}`, body).then(res => {
       this.toggleModal();
     });
+    this.handleEvents();
   };
 
-  handleDelete = () => {
+  handleDelete = async () => {
     const { event } = this.state;
     console.log("before req", event);
-    event.hearing_id
-      ? Axios.delete(`/api/delete-hearing/${event.hearing_id}`).then(res => {
-          console.log("hit hearing deletion");
-          this.toggleModal();
-        })
-      : Axios.delete(`/api/delete/${event.id}`).then(res => {
-          console.log("hit event deletion");
-          this.toggleModal();
-        });
+    await Axios.delete(`/api/delete/${event.id}`).then(res => {
+        console.log("hit event deletion");
+        this.toggleModal();
+      });
+      this.handleEvents()
   };
 
   handleLogOut = () => {

@@ -105,27 +105,10 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
     db.delete_event_details({ id })
-      .then(dbRes => {
-        res.sendStatus(200);
-      })
-      .catch(err => console.log(err));
-  },
-
-  deleteHearing: (req, res) => {
-    const db = req.app.get("db");
-    const { id } = req.params;
-    db.delete_hearing({ hearing_id: id })
-      .then(motion => {
-        return db.delete_motion({ hearing_id: id });
-      })
-      .then(response => {
-        return db.delete_response({ hearing_id: id });
-      })
-      .then(reply => {
-        return db.delete_reply({ hearing_id: id });
-      })
-      .then(dbRes => {
-        res.sendStatus(200);
-      });
+    .then(dbRes => {
+      res.sendStatus(200);
+    })
+    .catch(err => {res.status(500).send(`System failure`)});
   }
+
 };
