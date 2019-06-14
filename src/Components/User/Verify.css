@@ -1,0 +1,38 @@
+.verify-header {
+  color: #00334e;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 5.5rem;
+  text-align: center;
+}
+
+.verify-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.verify-display p {
+    margin: 3vh auto;
+}
+
+#btn-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.verify-btn {
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #00334e;
+  font-size: 20px;
+  background: #e8e8e8;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  text-transform: uppercase;
+  margin: 4vh 4vw;
+}

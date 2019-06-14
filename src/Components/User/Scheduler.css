@@ -1,19 +1,74 @@
 .verify-container {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .verify {
-    width: 50%;
-    height: 55%;
-    background: white;
-  }
+  width: 100vw;
+  height: 100vh;
+  /* background: ; */
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.verify {
+  width: 400px;
+  height: 30rem;
+  background: #5588a3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scheduler-header {
+  color: #00334e;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 6.5rem;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 16rem;
+  width: 300px;
+  margin-top: -5vh;
+}
+
+.date-input {
+  border: none;
+  margin: -10vw auto 2vw;
+  width: 100%;
+}
+
+.time-input {
+  border: none;
+  margin: 2vw auto;
+  width: 100%;
+}
+
+.submit-btn {
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #00334e;
+  font-size: 20px;
+  background: #e8e8e8;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+  text-transform: uppercase;
+  margin: 4vw 4vw;
+}
+
+.submit-btn:hover {
+  background: #00334e;
+  color: #e8e8e8;
+  text-decoration: none;
+}

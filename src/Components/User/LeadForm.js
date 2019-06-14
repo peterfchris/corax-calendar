@@ -36,6 +36,8 @@ export class LeadForm extends Component {
         })
     }
 
+    
+
     handleInfoUpdate = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -74,7 +76,7 @@ export class LeadForm extends Component {
                             className='lead-input'
                             placeholder='phone number'
                             type='number' />
-                            <button className='lead-button'>Schedule Consultation</button>
+                            <button className='lead-button' onClick={this.state}>Schedule Consultation</button>
                         </form>
                     </div>
                 </div>

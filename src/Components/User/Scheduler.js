@@ -4,6 +4,7 @@ import axios from 'axios'
 import './Scheduler.css'
 import "fullcalendar-reactwrapper/dist/css/fullcalendar.min.css";
 import {connect} from 'react-redux'
+import {addConsultation} from '../../redux/userReducer'
 
 export class UserCalendar extends Component {
   constructor() {
@@ -12,9 +13,7 @@ export class UserCalendar extends Component {
       events: [],
       showModal: false,
       startDate: '',
-      startTime: '',
-      endDate: '',
-      endTime: ''
+      startTime: ''
     };
   }
 
@@ -22,16 +21,13 @@ export class UserCalendar extends Component {
     event.preventDefault()
     const {
         startTime,
-        startDate,
-        endTime,
-        endDate
+        startDate
     } = this.state
 
     axios.post('/api/create-consultation', {
         potential_first: this.props.user.potential_first,
         potential_last: this.props.user.potential_last,
         start: `${startDate}T${startTime}:00`,
-        end: `${endDate}T${endTime}:00`,
         potential_id: this.props.user.id 
     })
     this.props.history.push('/confirmation')
@@ -40,6 +36,10 @@ export class UserCalendar extends Component {
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
+    })
+    this.props.addConsultation({
+      startTime: this.state.startTime, 
+      startDate: this.state.startDate
     })
   }
 
@@ -51,40 +51,37 @@ export class UserCalendar extends Component {
   };
 
   render() {
-    console.log(this.props.user)
     return (
       <div>
-        <h1>Pick a date and time</h1>
-        <form onSubmit={this.toggleModal}>
-          <input 
-            name='startDate'
-            type='date'
-            onChange={this.handleInputChange} 
-            />
-          <input 
-            name='startTime'
-            type='time'
-            onChange={this.handleInputChange} 
-            />
-          <input 
-            name='endDate'
-            type='date'
-            onChange={this.handleInputChange} 
-            />
-          <input 
-            name='endTime'
-            type='time'
-            onChange={this.handleInputChange}
-            />
-          <button>Submit</button>
-        </form>
-        {this.state.showModal ? (
-          <Verify
-            state={this.state}
-            handleCreateEvent={this.handleCreateEvent}
-            toggleModal={this.toggleModal}
-          />
-        ): null}
+        <div className='verify-container'>
+          <div className='verify'>
+            <h1 className='scheduler-header'>When would you like to come in?</h1>
+            <form onSubmit={this.toggleModal}>
+              <div className='input-container'>
+                <input 
+                  className='date-input'
+                  name='startDate'
+                  type='date'
+                  onChange={this.handleInputChange} 
+                  />
+                <input 
+                  className='time-input'
+                  name='startTime'
+                  type='time'
+                  onChange={this.handleInputChange} 
+                  />
+                <button className='submit-btn'>Submit</button>
+              </div>
+            </form>
+            {this.state.showModal ? (
+              <Verify
+                state={this.state}
+                handleCreateEvent={this.handleCreateEvent}
+                toggleModal={this.toggleModal}
+              />
+            ): null}
+          </div>
+        </div>
       </div>
     );
   }
@@ -94,4 +91,4 @@ const mapStateToProps = (reduxState) => {
   return reduxState
 }
 
-export default connect(mapStateToProps)(UserCalendar);
+export default connect(mapStateToProps, {addConsultation})(UserCalendar);
