@@ -47,6 +47,14 @@ export class CalendarView extends Component {
     });
   };
 
+  handleHearing = () => {
+    this.props.history.push('/new-hearing')
+  }
+
+  handleCreateEvent = () => {
+    this.props.history.push('/new-event')
+  }
+
   handleSaveEdit = async () => {
     const { title, start, end, startDate, endDate, event } = this.state;
     const body = {
@@ -91,26 +99,21 @@ export class CalendarView extends Component {
   };
 
   render() {
-    const { history } = this.props;
-    const createEvent = {
-      createEvent: {
-        text: "Create Event",
-        click: function() {
-          history.push("/new-event");
-        },
-        style: "height: 300px"
-      }
-    };
-
     return (
       <div>
-        <h1>Calendar</h1>
-        <button onClick={this.handleLogOut} className="logout-btn">
-          log out
-        </button>
+        <div className='calendar-btn-container'>
+          <button onClick={this.handleHearing} className='hearing-btn'>
+            Schedule Hearing
+          </button>
+          <button onClick={this.handleCreateEvent} className='hearing-btn'>
+            Create Event
+          </button>
+          <button onClick={this.handleLogOut} className="logout-btn">
+            log out
+          </button>
+        </div>
         <FullCalendar
           id="user-calendar"
-          customButtons={createEvent}
           header={{
             left: "prev,next today createEvent",
             center: "title",

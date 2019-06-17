@@ -61,15 +61,6 @@ export class CreateEvent extends Component {
                     onChange={this.handleInputChange}
                 />
                 <div id="btn-container">
-                <button
-                  onClick={event => {
-                    event.preventDefault();
-                    this.props.history.push('/new-hearing')
-                  }}
-                  className="new-event-btn"
-                >
-                  Schedule Hearing
-                </button>
                   <button 
                   className="new-event-btn"
                   type='submit'>
