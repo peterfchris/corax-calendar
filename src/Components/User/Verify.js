@@ -37,7 +37,7 @@ export class Verify extends Component {
       var min = startTimeArray[1]
       var AMPM = HH >= 12 ? "PM" : "AM";
       var hours;
-      if(HH == 0){
+      if(HH === 0){
         hours = HH + 12;
       } else if (HH > 12) {
         hours = HH - 12;

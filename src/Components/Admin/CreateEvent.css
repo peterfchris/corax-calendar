@@ -57,7 +57,7 @@
 
 /* input fields */
 
-.input-container {
+.event-input-container {
     display: flex;
 }
 
@@ -100,11 +100,11 @@
     margin: -2vh 3vh;
 }
 
-.time-input {
+.event-time-input {
     margin: 3vh 2vh;
 }
 
-.date-input {
+.event-date-input {
     margin: 3vh 1vh;
 }
 
@@ -117,11 +117,11 @@
     color: #00334e;
 }
 
-.time-text {
+.event-time-text {
     margin: 3vh;
 }
 
-.end-text {
+.event-end-text {
     margin-left: 3vh;
     margin-right: 4.3vh;
     margin-top: 3.8vh;

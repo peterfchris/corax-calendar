@@ -85,35 +85,35 @@ export class CreateHearing extends Component {
                 </button>
               </div>
               <br />
-              <div className="input-container">
-                <p className="time-text">Start Time</p>
+              <div className="event-input-container">
+                <p className="event-time-text">Start Time</p>
                 <input
                   name="startTime"
                   onChange={this.handleInputChange}
-                  className="time-input"
+                  className="event-time-input"
                   type="time"
                 />
-                <p className="time-text">Start Date</p>
+                <p className="event-time-text">Start Date</p>
                 <input
                   name="startDate"
                   onChange={this.handleInputChange}
-                  className="date-input"
+                  className="event-date-input"
                   type="date"
                 />
               </div>
               <div className="input-container-2">
-                <p className="end-text">End Time</p>
+                <p className="event-end-text">End Time</p>
                 <input
                   name="endTime"
                   onChange={this.handleInputChange}
-                  className="time-input"
+                  className="event-time-input"
                   type="time"
                 />
-                <p className="end-text">End Date</p>
+                <p className="event-end-text">End Date</p>
                 <input
                   name="endDate"
                   onChange={this.handleInputChange}
-                  className="date-input"
+                  className="event-date-input"
                   type="date"
                 />
               </div>
