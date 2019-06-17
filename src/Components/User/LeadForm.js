@@ -76,7 +76,7 @@ export class LeadForm extends Component {
                             className='lead-input'
                             placeholder='phone number'
                             type='number' />
-                            <button className='lead-button' onClick={this.state}>Schedule Consultation</button>
+                            <button className='lead-button'>Schedule Consultation</button>
                         </form>
                     </div>
                 </div>

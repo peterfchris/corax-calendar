@@ -4,7 +4,8 @@ const express = require('express'),
         massive = require('massive'),
         authCtrl = require('./controllers/authCtrl'),
         potentialCtrl = require('./controllers/potentialCtrl'),
-        calendarCtrl = require('./controllers/calendarCtrl')
+        calendarCtrl = require('./controllers/calendarCtrl'),
+        twilio = require('./twilio')
 const app = express()
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
@@ -46,3 +47,7 @@ app.delete('/api/delete/:id', calendarCtrl.deleteEvent)
 
 app.post('/api/client-info', potentialCtrl.createClient)
 app.post('/api/create-consultation', potentialCtrl.createConsultation)
+
+// Twilio Endpoint
+
+app.post('/api/confirmation', twilio.confirmation)

@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {addUser, addConsultation} from '../../redux/userReducer'
 import './Confirmation.css'
+import Axios from 'axios';
 
 
 export class Confirmation extends Component {
@@ -13,13 +14,23 @@ export class Confirmation extends Component {
             firstname: '',
             lastname: '',
             startDate: '',
-            startTime: ''
+            startTime: '',
+            phone: null
         }
     }
 
     componentDidMount = () => {
         this.handleDateFormat()
         this.handleTimeFormat()
+        this.handleSMS()
+    }
+
+    handleSMS = () => {
+        console.log(`+1${this.props.user.potential_phone}`)
+        Axios.post('/api/confirmation', {
+            potential_phone: `+1${this.props.user.potential_phone}`
+        })
+        .then(() => console.log('msg sent'))
     }
 
     handleDateFormat = () => {

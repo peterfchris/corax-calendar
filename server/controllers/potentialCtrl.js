@@ -29,6 +29,7 @@ module.exports = {
           start,
           end
         } = req.body;
+        console.log('req.body', req.body)
         const db = req.app.get("db");
         const potentialTitle = {title: `Potential Client Consultation - ${potential_first} ${potential_last}`}
         const {title} = potentialTitle
@@ -44,6 +45,3 @@ module.exports = {
           .catch(err => {res.status(500).send(`System failure`)});
       }
 }
-
-// make a new method that contains create consultation, where on front end it will hit 
-// with the update 
