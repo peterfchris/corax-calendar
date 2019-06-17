@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './UpdateEvent.css'
 
 export class UpdateEvent extends Component {
     constructor(){
@@ -21,25 +22,27 @@ export class UpdateEvent extends Component {
       <div>
         <div className="modal-container">
           <div className="modal">
-            {this.props.state.event.title}
-            <p>Select a new Title:</p>
-            <input name="title" type="text" onChange={this.props.handleChange} />
-            <p>Select a Start Date:</p>
-            <input name="startDate" type="date" onChange={this.props.handleChange} />
-            <p>Select a Start Time:</p>
-            <input name="start" type="time" onChange={this.props.handleChange} />
-            <p>Select a End Date:</p>
-            <input name="endDate" type="date" onChange={this.props.handleChange} />
-            <p>Select an End Time:</p>
-            <input name="end" type="time" onChange={this.props.handleChange} />
-            <div className="btn-container">
-              <button className="edit-btn" onClick={this.props.handleSaveEdit}>
+           <h3 className='update-header'>{this.props.state.event.title}</h3>
+            <div className='update-container'>
+              <p className='update-text'>Select a new Title:</p>
+              <input className='update-input' name="title" type="text" onChange={this.props.handleChange} />
+              <p className='update-text'>Select a Start Date:</p>
+              <input className='update-input' name="startDate" type="date" onChange={this.props.handleChange} />
+              <p className='update-text'>Select a Start Time:</p>
+              <input className='update-input' name="start" type="time" onChange={this.props.handleChange} />
+              <p className='update-text'>Select a End Date:</p>
+              <input className='update-input' name="endDate" type="date" onChange={this.props.handleChange} />
+              <p className='update-text'>Select an End Time:</p>
+              <input className='update-input' name="end" type="time" onChange={this.props.handleChange} />
+            </div>
+            <div className="update-btn-container">
+              <button className="update-edit-btn" onClick={this.props.handleSaveEdit}>
                 save
               </button>
-              <button className="edit-btn" onClick={this.props.handleDelete}>
+              <button className="update-edit-btn" onClick={this.props.handleDelete}>
                 delete
               </button>
-              <button className="exit-btn" onClick={this.props.toggleModal}>
+              <button className="update-exit-btn" onClick={this.props.toggleModal}>
                 x
               </button>
             </div>

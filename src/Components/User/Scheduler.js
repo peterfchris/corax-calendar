@@ -36,10 +36,12 @@ export class UserCalendar extends Component {
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
-    this.props.addConsultation({
-      startTime: this.state.startTime, 
-      startDate: this.state.startDate
+    }, () => {
+      console.log(e.target, this.state)
+      this.props.addConsultation({ 
+        startDate: this.state.startDate,
+        startTime: this.state.startTime
+      })
     })
   }
 
@@ -56,7 +58,7 @@ export class UserCalendar extends Component {
         <div className='verify-container'>
           <div className='verify'>
             <h1 className='scheduler-header'>When would you like to come in?</h1>
-            <form onSubmit={this.toggleModal}>
+            <form onSubmit={this.toggleModal} >
               <div className='input-container'>
                 <input 
                   className='date-input'
