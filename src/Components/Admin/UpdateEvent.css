@@ -3,28 +3,78 @@
   text-transform: uppercase;
   font-size: 1.5rem;
   text-align: center;
+  margin-top: -30vh;
+  margin-left: 5vh;
+  position: absolute;
 }
 
 .update-container {
+  padding-top: 10vh;
+}
 
+.update-box {
+  display: flex;
+  flex-direction: row;
 }
 
 .update-text {
-
+  color: #00334e;
+  margin: 2vh;
+  margin-right: 4vh;
 }
 
-.update-input {
-
+.update-input-field {
+  height: 1.4rem;
+  margin-top: 3%;
+  width: 24vw;
 }
 
 .update-btn-container {
-
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .update-edit-btn {
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #5588a3;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border: none;
+  margin: 1vh;
+}
 
+.update-edit-btn:hover {
+  background: #00334e;
+  text-decoration: none;
+  border: none;
 }
 
 .update-exit-btn {
-    
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  font-family: Arial;
+  color: #5588a3;
+  background: transparent;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border: none; 
+  position: absolute; 
+  margin-top: -32.5vh;
+  margin-left: 47vw;
+}
+
+.update-exit-btn:hover {
+  color: #00334e;
+  text-decoration: none;
+  border: none;
 }

@@ -13,8 +13,8 @@
 }
 
 .modal {
-  width: 50%;
-  height: 70%;
+  width: 500px;
+  height: 450px;
   background: white;
   display: flex;
   justify-content: center;
