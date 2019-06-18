@@ -4,6 +4,15 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateAdmin} from '../../redux/adminReducer'
 import './Login.css'
+import {
+    LoginContainer,
+    LoginFormContainer,
+    LoginHeader,
+    LoginForm,
+    LoginInputContainer,
+    LoginBtnContainer,
+    LoginButton
+} from './LoginStyles'
 
 export class Login extends Component {
     constructor(){
@@ -45,11 +54,11 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <div className="login-container" > 
-                    <div className="login-form">
-                        <h1 className='login'>Login</h1>
-                        <form className='login-form-1' onSubmit={this.handleLogin}>
-                            <div className='input-fields'>
+                <LoginContainer> 
+                    <LoginFormContainer>
+                        <LoginHeader>Login</LoginHeader>
+                        <LoginForm onSubmit={this.handleLogin}>
+                            <LoginInputContainer>
                                 <input
                                     className='login-email'
                                     type='text'
@@ -65,22 +74,20 @@ export class Login extends Component {
                                     name='password'
                                     onChange={this.handleLoginUpdate}
                                 />
-                            </div>
-                            <div className="login-btns">
-                                <button 
-                                    className='login-button' 
+                            </LoginInputContainer>
+                            <LoginBtnContainer>
+                                <LoginButton 
                                     onClick={this.handleCalendarLogin}>
                                         Login
-                                </button>
-                                <button 
-                                    className='login-button' 
+                                </LoginButton>
+                                <LoginButton 
                                     onClick={this.handleRegister}>
                                         Register
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                                </LoginButton>
+                            </LoginBtnContainer>
+                        </LoginForm>
+                    </LoginFormContainer>
+                </LoginContainer>
             </div>
         )
     }

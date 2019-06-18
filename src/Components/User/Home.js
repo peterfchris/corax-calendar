@@ -21,12 +21,12 @@ export class Home extends Component {
                 <HomePage>
                     <HomeContainer>
                         <HomeHeader>Corax Calendar</HomeHeader>
-                        <LoremStuff> Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                        et dolore magna aliqua.</LoremStuff>
-                        <LoremStuff>Ut enim ad minim veniam, quis nostrud 
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-                        consequat.</LoremStuff>
+                        <LoremStuff> Corax (Greek: Κόραξ, Korax; fl. 5th century BC) 
+                            was one of the founders (along with Tisias) of ancient 
+                            Greek rhetoric.</LoremStuff>
+                        <LoremStuff>Corax is said to have lived in Sicily in the 5th 
+                            century BC, when Thrasybulus, tyrant of Syracuse, was 
+                            overthrown and a democracy formed.</LoremStuff>
                         <ScheduleBtn onClick={this.handleClick}>
                             Schedule a Free Consultation
                         </ScheduleBtn>
