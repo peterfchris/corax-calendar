@@ -53,8 +53,8 @@ export class Verify extends Component {
   render() {
     return (
       <div>
-        <div className="modal-container">
-          <div className="modal">
+        <div className="verify-modal-container">
+          <div className="verify-modal">
             <form onSubmit={this.props.handleCreateEvent}>
               <h3 className='verify-header'>Is this correct?</h3>
               <div className='verify-display'>

@@ -13,8 +13,8 @@
 }
 
 .modal {
-  width: 500px;
-  height: 450px;
+  width: 50vw;
+  height: 100vh;
   background: white;
   display: flex;
   justify-content: center;
@@ -26,9 +26,9 @@
   text-transform: uppercase;
   font-size: 1.5rem;
   text-align: center;
-  margin-top: -30vh;
+  margin-top: -10vh;
   margin-left: 5vh;
-  position: absolute;
+  
 }
 
 .update-container {
@@ -91,9 +91,10 @@
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   border: none; 
+  position: relative;
+  margin-top: -47vh;
   position: absolute; 
-  margin-top: -32.5vh;
-  margin-left: 47vw;
+  margin-left: 47.5vw;
 }
 
 .update-exit-btn:hover {

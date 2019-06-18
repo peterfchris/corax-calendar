@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 3vh;
+    padding: 3vw;
 }
 
 .confirmation-header {
@@ -44,7 +44,7 @@
     text-decoration: none;
     border: none;
     text-transform: uppercase;
-    margin-top: 40vh;
+    margin-top: 25vh;
 }
 
 .confirmation-btn:hover {
